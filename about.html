@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>About Us | R Music & Movies</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter',sans-serif;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+
+background:#030712;
+background-image:
+radial-gradient(at 0% 0%,rgba(37,99,235,.13) 0px,transparent 50%),
+radial-gradient(at 100% 100%,rgba(59,130,246,.08) 0px,transparent 50%);
+color:white;
+overflow-x:hidden;
+
+}
+
+h1,h2,h3,.logo{
+font-family:'Orbitron',sans-serif;
+letter-spacing:1px;
+}
+
+/* NAVBAR */
+
+.navbar{
+
+position:fixed;
+top:0;
+left:0;
+width:100%;
+padding:18px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+background:rgba(3,7,18,.45);
+backdrop-filter:blur(18px);
+
+border-bottom:1px solid rgba(255,255,255,.06);
+
+z-index:1000;
+
+}
+
+.logo{
+
+display:flex;
+align-items:center;
+gap:12px;
+color:white;
+text-decoration:none;
+font-size:1.4rem;
+
+}
+
+.logo img{
+
+height:36px;
+
+}
+
+.nav-links{
+
+display:flex;
+gap:30px;
+list-style:none;
+
+}
+
+.nav-links a{
+
+color:white;
+text-decoration:none;
+opacity:.75;
+transition:.3s;
+
+}
+
+.nav-links a:hover{
+
+opacity:1;
+color:#60a5fa;
+
+}
+
+.contact-btn{
+
+padding:11px 24px;
+
+background:rgba(37,99,235,.18);
+
+border:1px solid rgba(59,130,246,.35);
+
+border-radius:50px;
+
+text-decoration:none;
+
+color:white;
+
+transition:.3s;
+
+}
+
+.contact-btn:hover{
+
+background:#2563eb;
+
+}
+
+/* HERO */
+
+.hero{
+
+height:75vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+text-align:center;
+
+position:relative;
+
+padding:20px;
+
+overflow:hidden;
+
+}
+
+.hero::before{
+
+content:"";
+
+position:absolute;
+
+width:700px;
+height:700px;
+
+border-radius:50%;
+
+background:radial-gradient(circle,rgba(37,99,235,.28),transparent 70%);
+
+filter:blur(80px);
+
+}
+
+.hero-content{
+
+position:relative;
+z-index:2;
+
+}
+
+.hero h1{
+
+font-size:clamp(2.5rem,6vw,5rem);
+
+background:linear-gradient(180deg,#fff,#93c5fd);
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:transparent;
+
+margin-bottom:25px;
+
+}
+
+.hero p{
+
+font-size:1.2rem;
+
+letter-spacing:4px;
+
+text-transform:uppercase;
+
+color:#93c5fd;
+
+}
+
+.scroll{
+
+margin-top:45px;
+
+opacity:.6;
+
+animation:float 2.5s infinite;
+
+}
+
+@keyframes float{
+
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(12px);}
+
+}
+
+/* INTRO */
+
+.container{
+
+width:min(1200px,90%);
+margin:auto;
+
+padding-bottom:100px;
+
+}
+
+.card{
+
+background:rgba(255,255,255,.03);
+
+backdrop-filter:blur(25px);
+
+border:1px solid rgba(255,255,255,.08);
+
+border-radius:30px;
+
+padding:55px;
+
+box-shadow:
+
+0 25px 60px rgba(0,0,0,.45),
+
+inset 0 1px 0 rgba(255,255,255,.08);
+
+transition:.4s;
+
+transform-style:preserve-3d;
+
+}
+
+.card:hover{
+
+border-color:rgba(59,130,246,.35);
+
+transform:translateY(-6px);
+
+}
+
+.tag{
+
+display:inline-block;
+
+padding:7px 18px;
+
+border-radius:50px;
+
+background:rgba(37,99,235,.18);
+
+border:1px solid rgba(59,130,246,.3);
+
+color:#60a5fa;
+
+font-size:.8rem;
+
+font-weight:600;
+
+letter-spacing:1px;
+
+margin-bottom:25px;
+
+}
+
+.card h2{
+
+font-size:2.4rem;
+
+margin-bottom:25px;
+
+}
+
+.card p{
+
+font-size:1.08rem;
+
+line-height:1.9;
+
+opacity:.82;
+
+margin-bottom:22px;
+
+}
+
+/* HIGHLIGHTS */
+
+.highlights{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+
+gap:25px;
+
+margin-top:45px;
+
+}
+
+.box{
+
+background:rgba(255,255,255,.03);
+
+border:1px solid rgba(255,255,255,.08);
+
+border-radius:22px;
+
+padding:30px;
+
+text-align:center;
+
+transition:.35s;
+
+}
+
+.box:hover{
+
+transform:translateY(-8px);
+
+border-color:#60a5fa;
+
+box-shadow:0 0 25px rgba(59,130,246,.25);
+
+}
+
+.box h3{
+
+margin:18px 0;
+
+color:#93c5fd;
+
+}
+
+.box p{
+
+font-size:.95rem;
+
+opacity:.75;
+
+line-height:1.7;
+
+}
+
+/* NEXT */
+
+.next{
+
+margin:90px auto;
+
+text-align:center;
+
+}
+
+.next h2{
+
+font-size:2.4rem;
+
+margin-bottom:20px;
+
+}
+
+.next p{
+
+opacity:.75;
+
+font-size:1.1rem;
+
+}
+
+.next-btn{
+
+display:inline-block;
+
+margin-top:35px;
+
+padding:18px 42px;
+
+background:linear-gradient(135deg,#2563eb,#1d4ed8);
+
+color:white;
+
+text-decoration:none;
+
+border-radius:50px;
+
+font-weight:600;
+
+transition:.3s;
+
+}
+
+.next-btn:hover{
+
+transform:translateY(-4px);
+
+box-shadow:0 15px 35px rgba(37,99,235,.45);
+
+}
+.wing-section{
+
+width:min(1200px,90%);
+margin:120px auto;
+
+}
+
+.section-title{
+
+text-align:center;
+margin-bottom:70px;
+
+}
+
+.section-title h2{
+
+font-size:3rem;
+margin:20px 0;
+
+}
+
+.section-title p{
+
+opacity:.8;
+max-width:850px;
+margin:auto;
+line-height:1.9;
+
+}
+
+.film-card{
+
+display:flex;
+align-items:center;
+gap:60px;
+
+background:rgba(255,255,255,.03);
+
+border:1px solid rgba(255,255,255,.08);
+
+border-radius:30px;
+
+padding:45px;
+
+margin-bottom:70px;
+
+backdrop-filter:blur(25px);
+
+transition:.4s;
+
+transform-style:preserve-3d;
+
+}
+
+.reverse{
+
+flex-direction:row-reverse;
+
+}
+
+.film-card:hover{
+
+border-color:#60a5fa;
+
+box-shadow:0 25px 60px rgba(0,0,0,.4);
+
+}
+
+.film-image{
+
+flex:1;
+
+}
+
+.film-image img{
+
+width:100%;
+display:block;
+border-radius:20px;
+
+box-shadow:0 20px 40px rgba(0,0,0,.4);
+
+transition:.5s;
+
+}
+
+.film-card:hover img{
+
+transform:scale(1.04);
+
+}
+
+.film-content{
+
+flex:1;
+
+}
+
+.film-content h3{
+
+font-size:2rem;
+
+margin:20px 0;
+
+color:#fff;
+
+}
+
+.film-content p{
+
+line-height:1.9;
+
+opacity:.82;
+
+margin-bottom:20px;
+
+}
+.training-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+
+gap:35px;
+
+}
+
+.training-card{
+
+background:rgba(255,255,255,.03);
+
+border:1px solid rgba(255,255,255,.08);
+
+border-radius:28px;
+
+overflow:hidden;
+
+backdrop-filter:blur(20px);
+
+transition:.4s;
+
+transform-style:preserve-3d;
+
+box-shadow:0 20px 45px rgba(0,0,0,.35);
+
+}
+
+.training-card:hover{
+
+transform:translateY(-10px);
+
+border-color:#60a5fa;
+
+box-shadow:0 25px 60px rgba(37,99,235,.25);
+
+}
+
+.training-card img{
+
+width:100%;
+
+height:230px;
+
+object-fit:cover;
+
+transition:.5s;
+
+}
+
+.training-card:hover img{
+
+transform:scale(1.08);
+
+}
+
+.training-card h3{
+
+padding:25px 25px 10px;
+
+font-size:1.5rem;
+
+color:#93c5fd;
+
+}
+
+.training-card p{
+
+padding:0 25px 30px;
+
+line-height:1.8;
+
+opacity:.82;
+
+}
+.training-card{
+
+opacity:0;
+
+transform:translateY(70px);
+
+transition:
+opacity .8s,
+transform .8s,
+border-color .3s,
+box-shadow .3s;
+
+}
+
+.training-card.show{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+@media(max-width:900px){
+
+.film-card,
+.reverse{
+
+flex-direction:column;
+
+padding:25px;
+
+}
+
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.nav-links{
+
+display:none;
+
+}
+
+.hero{
+
+height:65vh;
+
+}
+
+.card{
+
+padding:30px;
+
+}
+
+.card h2{
+
+font-size:1.8rem;
+
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<nav class="navbar">
+
+<a href="index.html" class="logo">
+
+<img src="logo.png">
+
+<span>R Music & Movies</span>
+
+</a>
+
+<ul class="nav-links">
+
+<li><a href="index.html">Home</a></li>
+
+<li><a href="#">About</a></li>
+
+<li><a href="main.html">Join</a></li>
+
+</ul>
+
+<a href="main.html" class="contact-btn">Join Now</a>
+
+</nav>
+
+<section class="hero">
+
+<div class="hero-content">
+
+<h1>ABOUT R MUSIC & MOVIES</h1>
+
+<p>Learn • Perform • Create • Inspire</p>
+
+<div class="scroll">
+
+▼ Scroll Down ▼
+
+</div>
+
+</div>
+
+</section>
+
+<div class="container">
+
+<div class="card">
+
+<div class="tag">
+
+WELCOME
+
+</div>
+
+<h2>Who We Are</h2>
+
+<p>
+
+R Music & Movies is a creative academy dedicated to nurturing talented individuals in the fields of music, filmmaking, acting, dance, modeling, and entertainment. Our mission is to provide aspiring artists with professional guidance, practical experience, and industry-oriented training that helps transform passion into a successful career.
+
+</p>
+
+<p>
+
+Our experienced mentors work closely with every student to develop creativity, confidence, technical skills, and stage presence. Through practical workshops, studio sessions, film productions, and live events, students gain real-world exposure while learning from experienced professionals.
+
+</p>
+
+<p>
+
+At R Music & Movies, we believe that every talented individual deserves the opportunity to shine. Whether your dream is to become an actor, singer, filmmaker, musician, dancer, or model, we provide the knowledge, resources, and platform to help you achieve your goals.
+
+</p>
+
+<div class="highlights">
+
+<div class="box">
+
+<h3>🎬 Film Making</h3>
+
+<p>Create professional films, commercials, and cinematic productions.</p>
+
+</div>
+
+<div class="box">
+
+<h3>🎤 Music</h3>
+
+<p>Professional vocal and instrumental training with studio experience.</p>
+
+</div>
+
+<div class="box">
+
+<h3>🎭 Performance</h3>
+
+<p>Develop acting, dancing, modeling, and stage confidence.</p>
+
+</div>
+
+<div class="box">
+
+<h3>🏆 Opportunities</h3>
+
+<p>Work on real projects and prepare yourself for the entertainment industry.</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="next">
+
+<h2>Our Three Professional Wings</h2>
+
+<p>
+
+Explore our Film Making Wing, Training Wing, and Event Wing to discover how we help talented artists build successful careers.
+
+</p>
+
+</div>
+
+<section class="wing-section" id="filmwing">
+
+    <div class="section-title">
+        <span class="tag">Our First Wing</span>
+        <h2>🎬 FILM MAKING WING</h2>
+        <p>
+            Our Film Making Wing provides practical, industry-oriented training that covers every stage of cinematic production—from idea development to the final release.
+        </p>
+    </div>
+
+    <!-- AD FILMS -->
+
+    <div class="film-card">
+
+        <div class="film-image">
+            <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=1200" alt="Advertisement Film">
+        </div>
+
+        <div class="film-content">
+
+            <div class="tag">Advertisement Films</div>
+
+            <h3>Ad Films</h3>
+
+            <p>
+                Advertisement films, commonly known as commercials, are short promotional videos created to market products, brands, businesses, or public awareness campaigns. Every second of an advertisement is carefully planned to capture attention, deliver a clear message, and leave a lasting impression.
+            </p>
+
+            <p>
+                At <b>R Music & Movies</b>, students learn concept development, script writing, storyboarding, camera techniques, lighting, directing, editing, color grading, and post-production. They also understand branding and how professional advertising campaigns are produced for television, cinema, and digital platforms.
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- SHORT FILMS -->
+
+    <div class="film-card reverse">
+
+        <div class="film-image">
+            <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=1200" alt="Short Film">
+        </div>
+
+        <div class="film-content">
+
+            <div class="tag">Creative Storytelling</div>
+
+            <h3>Short Films</h3>
+
+            <p>
+                Short films allow filmmakers to tell powerful stories in a limited duration. They are one of the best ways for aspiring directors, writers, actors, and cinematographers to showcase their creativity while building a professional portfolio.
+            </p>
+
+            <p>
+                Students gain practical experience in screenplay writing, directing, cinematography, sound recording, editing, and visual storytelling. They also learn how short films are prepared for online platforms and international film festivals.
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- FEATURE FILMS -->
+
+    <div class="film-card">
+
+        <div class="film-image">
+            <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?w=1200" alt="Feature Film">
+        </div>
+
+        <div class="film-content">
+
+            <div class="tag">Cinema Production</div>
+
+            <h3>Feature Films</h3>
+
+            <p>
+                Feature films are full-length cinematic productions that combine storytelling, acting, cinematography, visual design, music, editing, and production management into one complete entertainment experience.
+            </p>
+
+            <p>
+                Our students learn every stage of feature film production, including pre-production planning, budgeting, casting, directing, shooting, editing, sound design, visual effects, distribution, and promotion. Practical projects prepare students to work confidently in the professional film industry.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+<section class="wing-section" id="training">
+
+<div class="section-title">
+<div class="tag">Our Second Wing</div>
+<h2>🎓 TRAINING WING</h2>
+
+<p>
+Professional training designed to help aspiring artists build confidence,
+technical skills, creativity, and real industry experience.
+</p>
+
+</div>
+
+<div class="training-grid">
+
+<div class="training-card">
+<img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=900">
+<h3>🎤 Vocal Training</h3>
+<p>
+Develop vocal techniques, breathing control, pitch accuracy, stage confidence,
+microphone handling, and performance skills under experienced mentors.
+</p>
+</div>
+
+<div class="training-card">
+<img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=900">
+<h3>🎹 Instrumental Training</h3>
+<p>
+Learn professional musical instruments while improving rhythm, coordination,
+music theory, composition, and live performance techniques.
+</p>
+</div>
+
+<div class="training-card">
+<img src="https://i.pinimg.com/736x/b8/34/ad/b834ade7182a29af7d7e6c072afa8eeb.jpg">
+<h3>✍ Lyrics Writing</h3>
+<p>
+Understand songwriting, storytelling, rhyme schemes, emotions, and creative
+expression to write meaningful songs for different musical genres.
+</p>
+</div>
+
+<div class="training-card">
+<img src="https://i.pinimg.com/1200x/c7/d4/4c/c7d44c821d36cdb8a34d9ab467bbdf3a.jpg">
+<h3>🎭 Acting</h3>
+<p>
+Master acting techniques, dialogue delivery, character development,
+camera confidence, facial expressions, improvisation, and auditions.
+</p>
+</div>
+
+<div class="training-card">
+<img src="https://i.pinimg.com/736x/2a/e8/8b/2ae88bf2a384149cd3a1a9c4c624c968.jpg">
+<h3>💃 Dancing</h3>
+<p>
+Learn body movement, choreography, stage performance, rhythm, flexibility,
+and various dance styles with practical training sessions.
+</p>
+</div>
+
+<div class="training-card">
+<img src="https://i.pinimg.com/1200x/b6/cb/b7/b6cbb7a648d36fa550cf9386b8722ca2.jpg">
+<h3>👑 Modeling</h3>
+<p>
+Develop runway walking, posing, grooming, fashion presentation,
+camera confidence, and professional portfolio preparation.
+</p>
+</div>
+
+<div class="training-card">
+<img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1200">
+<h3>🎙 Studio Recording</h3>
+<p>
+Gain hands-on experience inside recording studios while learning
+microphone techniques, dubbing, mixing, recording, and audio production.
+</p>
+</div>
+
+<div class="training-card">
+<img src="https://i.pinimg.com/736x/01/95/b3/0195b36632c3bc8c96754ef94ecf994a.jpg">
+<h3>🎬 Film Production Training</h3>
+<p>
+Learn planning, budgeting, scheduling, directing, camera operations,
+crew management, post-production, and complete film production workflows.
+</p>
+</div>
+
+</div>
+
+</section>
+<section class="wing-section" id="events">
+
+<div class="section-title">
+
+<div class="tag">Our Third Wing</div>
+
+<h2>🎉 EVENT WING</h2>
+
+<p>
+
+Our Event Wing plans and manages memorable events with creativity, professionalism, and complete event solutions.
+
+</p>
+
+</div>
+
+<div class="training-grid">
+
+<div class="training-card">
+
+<img src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=1200">
+
+<h3>🏢 Corporate Events</h3>
+
+<p>
+
+We organize seminars, product launches, award ceremonies, conferences, annual celebrations, and corporate entertainment. Every event is professionally planned to reflect the company's identity while ensuring a memorable experience for guests.
+
+</p>
+
+</div>
+
+<div class="training-card">
+
+<img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=1200">
+
+<h3>🎂 Personal Events</h3>
+
+<p>
+
+From birthdays and anniversaries to engagements and private celebrations, our team manages decoration, entertainment, photography, music, and event coordination to create unforgettable memories.
+
+</p>
+
+</div>
+
+<div class="training-card">
+
+<img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1200">
+
+<h3>🌍 Social Events</h3>
+
+<p>
+
+We proudly organize cultural programs, charity events, educational programs, public awareness campaigns, festivals, and community gatherings that inspire people and strengthen social connections.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="container">
+
+<div class="card">
+
+<div class="tag">
+
+Our Mission
+
+</div>
+
+<h2>Building Tomorrow's Artists</h2>
+
+<p>
+
+At R Music & Movies, our mission is to discover hidden talent, provide professional training, and connect aspiring artists with genuine opportunities in the entertainment industry. Through creativity, dedication, and innovation, we help students transform their dreams into successful careers.
+
+</p>
+
+</div>
+
+</section>
+
+<footer>
+
+<h2>R MUSIC & MOVIES</h2>
+
+<p>
+
+Learn • Perform • Create • Inspire
+
+</p>
+
+<div class="footer-buttons">
+
+<a href="main.html" class="contact-btn">
+
+Join Now
+
+</a>
+
+<a href="index.html" class="next-btn">
+
+Back Home
+
+</a>
+
+</div>
+
+<br>
+
+<p>
+
+© 2026 R Music & Movies. All Rights Reserved.
+
+</p>
+
+</footer>
+
+</div>
+
+<script>
+
+/* 3D Tilt */
+
+const card=document.querySelector('.card');
+
+card.addEventListener('mousemove',e=>{
+
+if(window.innerWidth<768)return;
+
+const rect=card.getBoundingClientRect();
+
+const x=e.clientX-rect.left;
+
+const y=e.clientY-rect.top;
+
+const rotateX=((y/rect.height)-0.5)*-10;
+
+const rotateY=((x/rect.width)-0.5)*10;
+
+card.style.transform=`rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
+
+});
+
+card.addEventListener('mouseleave',()=>{
+
+card.style.transform='rotateX(0) rotateY(0)';
+
+});
+document.querySelectorAll(".film-card").forEach(card=>{
+
+card.addEventListener("mousemove",e=>{
+
+if(window.innerWidth<768)return;
+
+const rect=card.getBoundingClientRect();
+
+const x=e.clientX-rect.left;
+const y=e.clientY-rect.top;
+
+const rx=((y/rect.height)-0.5)*-10;
+const ry=((x/rect.width)-0.5)*10;
+
+card.style.transform=`rotateX(${rx}deg) rotateY(${ry}deg) translateY(-6px)`;
+
+});
+
+card.addEventListener("mouseleave",()=>{
+
+card.style.transform="rotateX(0) rotateY(0)";
+
+});
+
+});
+document.querySelectorAll(".training-card").forEach(card=>{
+
+card.addEventListener("mousemove",(e)=>{
+
+if(window.innerWidth<768)return;
+
+const rect=card.getBoundingClientRect();
+
+const x=e.clientX-rect.left;
+
+const y=e.clientY-rect.top;
+
+const rx=((y/rect.height)-0.5)*-8;
+
+const ry=((x/rect.width)-0.5)*8;
+
+card.style.transform=`rotateX(${rx}deg) rotateY(${ry}deg) translateY(-10px)`;
+
+});
+
+card.addEventListener("mouseleave",()=>{
+
+card.style.transform="rotateX(0) rotateY(0)";
+
+});
+
+});
+
+const observer=new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("show");
+
+}
+
+});
+
+},{threshold:.2});
+
+document.querySelectorAll(".training-card,.film-card").forEach(card=>{
+
+observer.observe(card);
+
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>R music & movies</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+h1, h2, h3, .logo {
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 1px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #030712;
+    background-image: 
+        radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.12) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.1) 0px, transparent 50%);
+    color: white;
+    overflow-x: hidden;
+}
+
+/* NAVBAR */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 18px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(3, 7, 18, 0.4);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-shadow: 0 0 15px rgba(37, 99, 235, 0.4);
+}
+
+.logo img {
+    height: 35px;
+    width: auto;
+    object-fit: contain;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    opacity: .7;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+    opacity: 1;
+    color: #60a5fa;
+    text-shadow: 0 0 10px rgba(96, 165, 250, 0.5);
+}
+
+.contact-btn {
+    padding: 10px 24px;
+    background: rgba(37, 99, 235, 0.2);
+    border: 1px solid rgba(59, 130, 246, 0.4);
+    border-radius: 50px;
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.contact-btn:hover {
+    background: #2563eb;
+    box-shadow: 0 0 25px rgba(37, 99, 235, 0.5);
+    transform: translateY(-2px);
+}
+
+/* HERO SECTION */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    perspective: 1000px;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(37, 99, 235, 0.3) 0%, rgba(59, 130, 246, 0) 70%);
+    filter: blur(80px);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    transform: translateZ(50px);
+}
+
+.hero h1 {
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 900;
+    background: linear-gradient(180deg, #ffffff 30%, #93c5fd 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.hero p {
+    margin-top: 25px;
+    font-size: 1.3rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #93c5fd;
+    font-weight: 500;
+    opacity: .9;
+}
+
+.scroll-text {
+    margin-top: 50px;
+    opacity: .5;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    animation: float 2.5s infinite ease-in-out;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); opacity: 0.4; }
+    50% { transform: translateY(12px); opacity: 0.9; }
+}
+
+/* 3D GLASS BLOG SECTION */
+.blog-section {
+    width: min(1200px, 90%);
+    margin: auto;
+    padding-bottom: 120px;
+    perspective: 1500px;
+}
+
+.blog-card {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    margin: 100px 0;
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 32px;
+    padding: 45px;
+    transform-style: preserve-3d;
+    box-shadow: 
+        0 30px 60px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255,255,255,0.1);
+    opacity: 0;
+    transform: translateY(80px) rotateX(5deg);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s;
+    will-change: transform, opacity;
+}
+
+.blog-card.show {
+    opacity: 1;
+    transform: translateY(0) rotateX(0deg);
+}
+
+.blog-card:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(59, 130, 246, 0.3);
+}
+
+.blog-card:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.image-box {
+    flex: 1;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.image-box img {
+    width: 100%;
+    display: block;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    transform: translateZ(30px);
+}
+
+.content {
+    flex: 1;
+    transform-style: preserve-3d;
+}
+
+.tag {
+    display: inline-block;
+    padding: 6px 16px;
+    background: rgba(37, 99, 235, 0.2);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    color: #60a5fa;
+    border-radius: 50px;
+    font-size: .75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    transform: translateZ(15px);
+}
+
+.content h2 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    color: #ffffff;
+    transform: translateZ(25px);
+}
+
+.content p {
+    line-height: 1.8;
+    opacity: .75;
+    font-size: 1.05rem;
+    transform: translateZ(10px);
+}
+
+/* FOOTER SECTION */
+footer {
+    padding: 90px 20px;
+    text-align: center;
+    background: linear-gradient(180deg,#07111f,#030712);
+    backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(96,165,250,.15);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.05);
+}
+
+footer h3 {
+    font-size:2.1rem;
+    margin-bottom:25px;
+    color:#93c5fd;
+    text-shadow:0 0 18px rgba(96,165,250,.4);
+}
+
+footer a {
+    color: #60a5fa;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+footer a:hover {
+    color: #93c5fd;
+    text-shadow: 0 0 8px rgba(147, 197, 253, 0.6);
+}
+
+footer p {
+    margin:15px 0;
+    opacity:.85;
+    font-size:1.03rem;
+    line-height:1.8;
+}
+
+.join-btn {
+    display: inline-block;
+    margin-top: 2px;
+    padding: 16px 40px;
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 50px;
+    box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.footer-buttons{
+    display:flex;
+    justify-content:center;
+    gap:18px;
+    flex-wrap:wrap;
+    margin-top:25px;
+}
+
+.about-btn{
+    display:inline-block;
+    padding:16px 40px;
+    background:linear-gradient(135deg,#22c55e,#16a34a);
+    color:white;
+    text-decoration:none;
+    font-weight:600;
+    border-radius:50px;
+    box-shadow:0 10px 30px rgba(34,197,94,.35);
+    transition:all .3s cubic-bezier(.2,.8,.2,1);
+}
+
+.about-btn:hover{
+    transform:translateY(-3px) scale(1.02);
+    box-shadow:0 15px 40px rgba(34,197,94,.5);
+}
+
+.join-btn:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(37, 99, 235, 0.5);
+}
+
+/* MOBILE REFINEMENTS */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 14px 5%;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .logo {
+        font-size: 1.1rem;
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .blog-section {
+        width: 92%;
+    }
+
+    .blog-card, 
+    .blog-card:nth-child(even) {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 25px;
+        padding: 25px;
+        border-radius: 24px;
+        transform: translateY(40px) !important;
+    }
+
+    .blog-card.show {
+        transform: translateY(0) !important;
+    }
+
+    .content h2 {
+        font-size: 1.5rem;
+    }
+    
+    .blog-card:hover {
+        transform: none !important;
+    }
+    html, body {
+        width: 100%;
+        overflow-x: hidden;
+    }
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+    <a href="#" class="logo">
+        <img src="logo.png" alt="Logo">
+        <span>R music & movies</span>
+    </a>
+    <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#opportunities">Opportunities</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="contact-btn">Join Now</a>
+</nav>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>WELCOME TO OUR ACADEMY</h1>
+        <p>Learn | Create | Record | Release</p>
+        <div class="scroll-text">▼ Scroll Down ▼</div>
+    </div>
+</section>
+
+<section class="blog-section" id="about">
+    <div class="blog-card">
+        <div class="image-box"><img src="1.png" alt="Director"></div>
+        <div class="content">
+            <div class="tag">Featured Article</div>
+            <h2>Meet Our music director</h2>
+            <p>25 Years of experience in the music industry, at R MUSIC & MOVIES, we believe that every individual has unique talent and the potential to shine in the entertainment industry. Founded with a vision to nurture aspiring artists, our academy provides professional training in acting, music, stage performance, and personality development.</p>
+        </div>
+    </div>
+
+    <div class="blog-card">
+        <div class="image-box"><img src="2.png" alt="Opportunities"></div>
+        <div class="content">
+            <div class="tag">Networking</div>
+            <h2 id="opportunities">Better opportunities</h2>
+            <p>Our experienced mentors and industry-focused training programs are designed to guide students at every stage of their journey. Whether you dream of becoming an actor, singer, performer, or entertainer, R MUSIC & MOVIES offers a supportive environment where you can learn, grow, and discover your true potential.</p>
+        </div>
+    </div>
+
+    <div class="blog-card">
+        <div class="image-box"><img src="3.png" alt="Why Us"></div>
+        <div class="content">
+            <div class="tag">Collaboration</div>
+            <h2>Why US?</h2>
+            <p>What makes R MUSIC & MOVIES different is our dedication to connecting talented individuals with genuine opportunities in the industry. We strive to help deserving students gain exposure and prepare for auditions, projects, and professional engagements.</p>
+        </div>
+    </div>
+
+    <div class="blog-card">
+        <div class="image-box"><img src="4.png" alt="Passion"></div>
+        <div class="content">
+            <div class="tag">Recognition</div>
+            <h2>We turn passion into career</h2>
+            <p>Our goal is to bridge the gap between talent and opportunity, giving students the guidance they need to move forward with absolute confidence as they step into their professional creative futures.</p>
+        </div>
+    </div>
+</section>
+
+<footer id="contact">
+    <div class="footer-content">
+
+        <div class="footer-left">
+            <h3>R MUSIC & MOVIES</h3>
+            <p>Helping talented artists learn, perform and build successful careers in the entertainment industry.</p>
+        </div>
+
+        <div class="footer-right">
+            <p>📫 <a href="mailto:rmusicandmovies295@gmail.com">rmusicandmovies295@gmail.com</a></p>
+            <p>▶ <a href="https://youtube.com/@rmusic1?si=OY79gxPVhE3j9WYd" target="_blank">YouTube</a></p>
+            <p>🎦 <a href="https://www.facebook.com/share/18nBGVQVzd/" target="_blank">Facebook</a></p>
+            <p>📷 <a href="https://www.instagram.com/p/DZutFVrzWfN/?igsh=bXcxODh1YXIzaWNu" target="_blank">Instagram</a></p>
+
+            <div class="footer-buttons">
+                <a href="main.html" class="join-btn">Join Now</a>
+                <a href="about.html" class="about-btn">More About Us</a>
+            </div>
+        </div>
+
+    </div>
+
+    <hr>
+
+    <p class="copyright">© 2026 R MUSIC & MOVIES. All Rights Reserved.</p>
+</footer>
+<script>
+// Fade-in entry intersection logic
+const cards = document.querySelectorAll('.blog-card');
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting) {
+            entry.target.classList.add('show');
+        }
+    });
+}, { threshold: 0.15 });
+
+cards.forEach(card => observer.observe(card));
+
+// Premium, Smooth 3D Interactive Mouse Motion
+cards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+        if (window.innerWidth <= 768) return; // Disable complex math on mobile touch layout
+        
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left; 
+        const y = e.clientY - rect.top; 
+        
+        // Find normal values (-0.5 to 0.5 range)
+        const normalizeX = (x / rect.width) - 0.5;
+        const normalizeY = (y / rect.height) - 0.5;
+        
+        // Gentle tilt ratios for cinematic 3D realism
+        const tiltX = (normalizeY * -12).toFixed(2);
+        const tiltY = (normalizeX * 12).toFixed(2);
+        
+        card.style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateY(-5px)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+        card.style.transform = `rotateX(0deg) rotateY(0deg) translateY(0px)`;
+    });
+});
+</script>
+
+</body>
+</html>

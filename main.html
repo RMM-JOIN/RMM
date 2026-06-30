@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join R MUSIC & MOVIES</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            // 1. REPLACE WITH YOUR PUBLIC KEY (Found in EmailJS Account/Personal Settings)
+            emailjs.init("ONdUe5OIMpDIyqoH4"); 
+        })();
+    </script>
+
+  <style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at top left,#2563eb33,transparent 45%),
+        radial-gradient(circle at bottom right,#7c3aed33,transparent 45%),
+        linear-gradient(135deg,#030712,#0f172a,#111827,#1e293b);
+    background-size:200% 200%;
+    animation:bgMove 15s ease infinite;
+}
+
+@keyframes bgMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+body::before,
+body::after{
+    content:"";
+    position:fixed;
+    width:420px;
+    height:420px;
+    border-radius:50%;
+    filter:blur(170px);
+    z-index:0;
+    animation:floatGlow 12s ease-in-out infinite alternate;
+}
+
+body::before{
+    top:-120px;
+    left:-120px;
+    background:#2563eb;
+    opacity:.35;
+}
+
+body::after{
+    bottom:-150px;
+    right:-120px;
+    background:#9333ea;
+    opacity:.28;
+}
+
+@keyframes floatGlow{
+    from{
+        transform:translateY(-20px) translateX(-10px);
+    }
+    to{
+        transform:translateY(30px) translateX(30px);
+    }
+}
+
+.form-box{
+    position:relative;
+    z-index:2;
+    width:100%;
+    max-width:560px;
+    padding:42px;
+    border-radius:28px;
+
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(25px);
+    -webkit-backdrop-filter:blur(25px);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.45),
+        inset 0 1px 0 rgba(255,255,255,.15);
+
+    transition:.4s;
+}
+
+.form-box:hover{
+    transform:translateY(-4px);
+    box-shadow:
+        0 35px 80px rgba(0,0,0,.5),
+        0 0 35px rgba(37,99,235,.18);
+}
+
+.form-box::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:inherit;
+    padding:1px;
+    background:linear-gradient(135deg,
+        rgba(255,255,255,.28),
+        rgba(37,99,235,.35),
+        rgba(168,85,247,.35));
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite:xor;
+    mask-composite:exclude;
+    pointer-events:none;
+}
+
+.back-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom:24px;
+    text-decoration:none;
+    color:#dbeafe;
+    font-weight:500;
+    opacity:.85;
+    transition:.3s;
+}
+
+.back-btn:hover{
+    opacity:1;
+    transform:translateX(-4px);
+    color:white;
+}
+
+h1{
+    text-align:center;
+    color:white;
+    font-size:2rem;
+    font-weight:700;
+    letter-spacing:1px;
+    margin-bottom:10px;
+    text-shadow:0 0 20px rgba(37,99,235,.45);
+}
+
+.subtitle{
+    text-align:center;
+    color:rgba(255,255,255,.75);
+    margin-bottom:32px;
+    font-size:.97rem;
+    line-height:1.6;
+}
+
+input{
+    width:100%;
+    padding:16px 18px;
+    margin-bottom:18px;
+
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:16px;
+
+    background:rgba(255,255,255,.06);
+    color:white;
+    font-size:1rem;
+
+    outline:none;
+
+    transition:
+        border-color .25s,
+        background .25s,
+        box-shadow .25s,
+        transform .25s;
+}
+
+input:hover{
+    background:rgba(255,255,255,.08);
+}
+
+input:focus{
+    background:rgba(255,255,255,.09);
+    border-color:#60a5fa;
+    box-shadow:
+        0 0 0 4px rgba(37,99,235,.18),
+        0 0 20px rgba(37,99,235,.2);
+    transform:translateY(-2px);
+}
+
+input::placeholder{
+    color:rgba(255,255,255,.55);
+}
+
+input[type="date"]{
+    color-scheme:dark;
+}
+
+button{
+    width:100%;
+    padding:16px;
+    margin-top:6px;
+
+    border:none;
+    border-radius:50px;
+
+    background:linear-gradient(135deg,#2563eb,#3b82f6,#60a5fa);
+    background-size:200% auto;
+
+    color:white;
+    font-size:1rem;
+    font-weight:600;
+    letter-spacing:.5px;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 15px 35px rgba(37,99,235,.35);
+
+    transition:
+        .35s;
+}
+
+button:hover{
+    transform:translateY(-3px) scale(1.01);
+    background-position:right center;
+    box-shadow:
+        0 20px 45px rgba(37,99,235,.5);
+}
+
+button:active{
+    transform:scale(.98);
+}
+
+#status{
+    margin-top:18px;
+    text-align:center;
+    font-size:.95rem;
+    font-weight:500;
+    min-height:24px;
+    color:#d1d5db;
+}
+
+@media (max-width:600px){
+
+    .form-box{
+        padding:28px 24px;
+        border-radius:24px;
+    }
+
+    h1{
+        font-size:1.6rem;
+    }
+
+    input,
+    button{
+        padding:15px;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="form-box">
+    <a href="index.html" class="back-btn">← Back</a>
+
+    <h1>JOIN R MUSIC & MOVIES</h1>
+    <p class="subtitle">Fill your details and our team will contact you.</p>
+
+    <form id="academyForm">
+        <input type="text" id="name" placeholder="Full Name" required>
+        <input type="date" id="dob" required>
+        <input type="tel" id="phone" placeholder="Phone Number" required>
+        
+        <button type="submit">Submit Application</button>
+    </form>
+
+    <div id="status"></div>
+</div>
+
+<script>
+document.getElementById('academyForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Stop page refresh from breaking the request
+
+    const statusDiv = document.getElementById('status');
+    statusDiv.style.color = "#38bdf8"; 
+    statusDiv.innerText = "Sending application...";
+
+    // Extract input field values
+    const name = document.getElementById('name').value;
+    const dob = document.getElementById('dob').value;
+    const phone = document.getElementById('phone').value;
+
+    // Structure parameters to match variables {{name}}, {{message}}, and {{title}} in EmailJS
+    const templateParams = {
+        title: "New Student Sign-up",
+        name: name,
+        message: `Date of Birth: ${dob} \nPhone Number: ${phone}`
+    };
+
+    // 2. REPLACE 'YOUR_SERVICE_ID' AND 'YOUR_TEMPLATE_ID' WITH YOUR ACTUAL EMAILJS IDS
+    emailjs.send('service_uo17wnm', 'template_ty3bb7l', templateParams)
+        .then(function(response) {
+            statusDiv.style.color = "#4ade80"; // Light green for success
+            statusDiv.innerText = "Application sent successfully!";
+            document.getElementById('academyForm').reset();
+        }, function(error) {
+            statusDiv.style.color = "#f87171"; // Light red for error
+            statusDiv.innerText = "Error: Failed to send application.";
+            console.error("EmailJS Error details:", error);
+        });
+});
+</script>
+
+</body>
+</html>
