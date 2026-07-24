@@ -330,6 +330,97 @@ button:active{
         0 15px 35px rgba(0,0,0,.35);
 }
 
+/* ==============================
+   TEASER CARD
+============================== */
+
+.teaser-card{
+    margin:22px 0 28px;
+    padding:18px;
+    border-radius:20px;
+    background:linear-gradient(145deg,
+        rgba(37,99,235,.12),
+        rgba(124,58,237,.10));
+    border:1px solid rgba(255,255,255,.12);
+    backdrop-filter:blur(15px);
+    -webkit-backdrop-filter:blur(15px);
+    transition:.35s;
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.30);
+}
+
+.teaser-card:hover{
+    transform:translateY(-5px);
+    box-shadow:
+        0 25px 45px rgba(37,99,235,.25);
+}
+
+.teaser-title{
+    text-align:center;
+    color:#fff;
+    font-size:1.15rem;
+    margin-bottom:15px;
+    font-weight:700;
+    letter-spacing:1px;
+}
+
+.teaser-thumb{
+    width:100%;
+    border-radius:16px;
+    overflow:hidden;
+    display:block;
+    position:relative;
+}
+
+.teaser-thumb img{
+    width:100%;
+    display:block;
+    transition:.35s;
+}
+
+.teaser-thumb:hover img{
+    transform:scale(1.05);
+}
+
+.play-icon{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:85px;
+    height:60px;
+    background:rgba(255,0,0,.92);
+    border-radius:14px;
+}
+
+.play-icon::before{
+    content:"";
+    position:absolute;
+    left:34px;
+    top:18px;
+    border-style:solid;
+    border-width:12px 0 12px 20px;
+    border-color:transparent transparent transparent white;
+}
+
+.watch-btn{
+    display:block;
+    margin-top:16px;
+    text-align:center;
+    text-decoration:none;
+    color:white;
+    padding:12px;
+    border-radius:50px;
+    background:linear-gradient(135deg,#ef4444,#dc2626);
+    font-weight:600;
+    transition:.3s;
+}
+
+.watch-btn:hover{
+    transform:scale(1.03);
+    box-shadow:0 10px 30px rgba(239,68,68,.45);
+}
+      
 .info-img:hover{
     transform:scale(1.02);
     box-shadow:
@@ -399,7 +490,30 @@ button:active{
     </p>
 
     <img src="imge.jpg" class="info-img" alt="Movie">
+<div class="teaser-card">
 
+    <div class="teaser-title">
+        🎬 OFFICIAL TEASER
+    </div>
+
+    <a href="https://youtu.be/2sBY7OuvCAg?si=LZYInw-e1Ii1YQmS"
+       target="_blank"
+       class="teaser-thumb">
+
+        <img src="https://img.youtube.com/vi/2sBY7OuvCAg/maxresdefault.jpg"
+             alt="Official Teaser">
+
+        <div class="play-icon"></div>
+    </a>
+
+    <a class="watch-btn"
+       target="_blank"
+       href="https://youtu.be/2sBY7OuvCAg?si=LZYInw-e1Ii1YQmS">
+       ▶ Watch on YouTube
+    </a>
+
+</div>
+    
 </div>
     <div id="status"></div>
 </div>
