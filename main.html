@@ -29,9 +29,14 @@ body{
     min-height:100vh;
     display:flex;
     justify-content:center;
-    align-items:center;
-    padding:20px;
-    overflow:hidden;
+
+    /* Don't vertically center long pages */
+    align-items:flex-start;
+
+    padding:40px 20px;
+    overflow-y:auto;
+    overflow-x:hidden;
+
     background:
         radial-gradient(circle at top left,#2563eb33,transparent 45%),
         radial-gradient(circle at bottom right,#7c3aed33,transparent 45%),
