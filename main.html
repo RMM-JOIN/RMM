@@ -266,6 +266,89 @@ button:active{
         padding:15px;
     }
 }
+/* ==============================
+   AUDITION CARD
+============================== */
+
+.audition-card{
+    margin:30px 0;
+    padding:24px;
+    border-radius:22px;
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.08);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.08),
+        0 12px 35px rgba(0,0,0,.25);
+}
+
+.banner-img{
+    width:100%;
+    border-radius:20px;
+    margin-bottom:22px;
+    display:block;
+    box-shadow:0 15px 35px rgba(0,0,0,.35);
+}
+
+.audition-card h2{
+    color:#60a5fa;
+    text-align:center;
+    margin-bottom:8px;
+    letter-spacing:1px;
+    font-size:1.45rem;
+}
+
+.audition-card h3{
+    text-align:center;
+    color:white;
+    margin-bottom:18px;
+    font-size:1.15rem;
+    font-weight:600;
+}
+
+.audition-text{
+    color:rgba(255,255,255,.82);
+    line-height:1.8;
+    text-align:justify;
+    margin-bottom:20px;
+    font-size:.96rem;
+}
+
+.info-img{
+    width:100%;
+    border-radius:18px;
+    margin:18px 0 24px;
+    display:block;
+    transition:.35s;
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.35);
+}
+
+.info-img:hover{
+    transform:scale(1.02);
+    box-shadow:
+        0 20px 45px rgba(37,99,235,.28);
+}
+
+@media(max-width:600px){
+
+    .audition-card{
+        padding:18px;
+    }
+
+    .audition-card h2{
+        font-size:1.25rem;
+    }
+
+    .audition-card h3{
+        font-size:1rem;
+    }
+
+    .audition-text{
+        font-size:.9rem;
+    }
+}
 </style>
 </head>
 <body>
@@ -283,7 +366,36 @@ button:active{
         
         <button type="submit">Submit Application</button>
     </form>
+<!-- Audition Section -->
+<div class="audition-card">
 
+    <img src="banner.jpg" class="banner-img" alt="Jai Bihar Bakhtiyarpur Chapter">
+
+    <h2>🎬 AUDITION OPEN</h2>
+
+    <h3>JAI BIHAR – BAKHTIYARPUR CHAPTER</h3>
+
+    <p class="audition-text">
+        R MUSIC & MOVIES proudly announces auditions for our upcoming feature
+        film <strong>"JAI BIHAR – BAKHTIYARPUR CHAPTER"</strong>. We are looking
+        for passionate actors, fresh faces, performers, and talented individuals
+        who are ready to showcase their skills on the big screen. Previous acting
+        experience is welcome but not mandatory if you have confidence and dedication.
+    </p>
+
+    <img src="imgh.jpg" class="info-img" alt="Audition">
+
+    <p class="audition-text">
+        This is an excellent opportunity to become part of a professional film
+        production. Selected candidates will work alongside experienced artists
+        and filmmakers. Fill out the registration form below with your correct
+        details, and our team will contact shortlisted applicants regarding
+        audition dates, venue, and further instructions.
+    </p>
+
+    <img src="imge.jpg" class="info-img" alt="Movie">
+
+</div>
     <div id="status"></div>
 </div>
 
