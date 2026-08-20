@@ -9,12 +9,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script defer type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script type="text/javascript">
-        (function(){
-            // 1. REPLACE WITH YOUR PUBLIC KEY (Found in EmailJS Account/Personal Settings)
-            emailjs.init("ONdUe5OIMpDIyqoH4"); 
-        })();
+        window.addEventListener("DOMContentLoaded", () => {
+            if (window.emailjs) emailjs.init("ONdUe5OIMpDIyqoH4");
+        });
     </script>
 
   <style>
@@ -41,15 +40,10 @@ body{
         radial-gradient(circle at top left,#2563eb33,transparent 45%),
         radial-gradient(circle at bottom right,#7c3aed33,transparent 45%),
         linear-gradient(135deg,#030712,#0f172a,#111827,#1e293b);
-    background-size:200% 200%;
-    animation:bgMove 15s ease infinite;
+    background-size:100% 100%;
+    animation:none;
 }
 
-@keyframes bgMove{
-    0%{background-position:0% 50%;}
-    50%{background-position:100% 50%;}
-    100%{background-position:0% 50%;}
-}
 
 body::before,
 body::after{
@@ -58,9 +52,10 @@ body::after{
     width:420px;
     height:420px;
     border-radius:50%;
-    filter:blur(170px);
+    filter:blur(90px);
     z-index:0;
-    animation:floatGlow 12s ease-in-out infinite alternate;
+    animation:none;
+    contain:paint;
 }
 
 body::before{
@@ -77,14 +72,6 @@ body::after{
     opacity:.28;
 }
 
-@keyframes floatGlow{
-    from{
-        transform:translateY(-20px) translateX(-10px);
-    }
-    to{
-        transform:translateY(30px) translateX(30px);
-    }
-}
 
 .form-box{
     position:relative;
@@ -95,8 +82,8 @@ body::after{
     border-radius:28px;
 
     background:rgba(255,255,255,.08);
-    backdrop-filter:blur(25px);
-    -webkit-backdrop-filter:blur(25px);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
 
     border:1px solid rgba(255,255,255,.12);
 
@@ -104,7 +91,8 @@ body::after{
         0 25px 60px rgba(0,0,0,.45),
         inset 0 1px 0 rgba(255,255,255,.15);
 
-    transition:.4s;
+    transition:transform .2s ease, box-shadow .2s ease;
+    contain:layout paint;
 }
 
 .form-box:hover{
@@ -276,13 +264,15 @@ button:active{
 ============================== */
 
 .audition-card{
+    content-visibility:auto;
+    contain-intrinsic-size:900px;
     margin:30px 0;
     padding:24px;
     border-radius:22px;
     background:rgba(255,255,255,.05);
     border:1px solid rgba(255,255,255,.08);
-    backdrop-filter:blur(18px);
-    -webkit-backdrop-filter:blur(18px);
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
     box-shadow:
         inset 0 1px 0 rgba(255,255,255,.08),
         0 12px 35px rgba(0,0,0,.25);
@@ -342,8 +332,8 @@ button:active{
         rgba(37,99,235,.12),
         rgba(124,58,237,.10));
     border:1px solid rgba(255,255,255,.12);
-    backdrop-filter:blur(15px);
-    -webkit-backdrop-filter:blur(15px);
+    backdrop-filter:blur(7px);
+    -webkit-backdrop-filter:blur(7px);
     transition:.35s;
     box-shadow:
         0 15px 35px rgba(0,0,0,.30);
@@ -445,6 +435,77 @@ button:active{
         font-size:.9rem;
     }
 }
+
+/* PERFORMANCE + POLISH */
+.form-box,
+.audition-card,
+.teaser-card {
+    isolation:isolate;
+}
+
+img {
+    max-width:100%;
+    height:auto;
+}
+
+@media (hover:none), (pointer:coarse) {
+    .form-box:hover,
+    .teaser-card:hover,
+    .info-img:hover,
+    .back-btn:hover,
+    button:hover {
+        transform:none;
+        box-shadow:inherit;
+    }
+
+    .teaser-thumb:hover img {
+        transform:none;
+    }
+}
+
+@media (prefers-reduced-motion:reduce) {
+    *, *::before, *::after {
+        animation:none !important;
+        transition:none !important;
+        scroll-behavior:auto !important;
+    }
+}
+
+@media (max-width:600px) {
+    body::before,
+    body::after {
+        width:260px;
+        height:260px;
+        filter:blur(65px);
+        opacity:.22;
+    }
+
+    .form-box {
+        background:rgba(15,23,42,.78);
+        backdrop-filter:blur(6px);
+        -webkit-backdrop-filter:blur(6px);
+        box-shadow:0 18px 40px rgba(0,0,0,.35);
+    }
+
+    .audition-card,
+    .teaser-card {
+        background:rgba(15,23,42,.72);
+        backdrop-filter:blur(5px);
+        -webkit-backdrop-filter:blur(5px);
+    }
+}
+
+@media (max-width:380px) {
+    body {
+        padding:22px 12px;
+    }
+
+    .form-box {
+        padding:22px 16px;
+        border-radius:20px;
+    }
+}
+
 </style>
 </head>
 <body>
@@ -465,7 +526,7 @@ button:active{
 <!-- Audition Section -->
 <div class="audition-card">
 
-    <img src="banner.jpg" class="banner-img" alt="Jai Bihar Bakhtiyarpur Chapter">
+    <img src="banner.jpg" class="banner-img" alt="Jai Bihar Bakhtiyarpur Chapter" loading="lazy" decoding="async">
 
     <h2>🎬 AUDITION OPEN</h2>
 
@@ -479,7 +540,7 @@ button:active{
         experience is welcome but not mandatory if you have confidence and dedication.
     </p>
 
-    <img src="imgh.jpg" class="info-img" alt="Audition">
+    <img src="imgh.jpg" class="info-img" alt="Audition" loading="lazy" decoding="async">
 
     <p class="audition-text">
         This is an excellent opportunity to become part of a professional film
@@ -489,7 +550,7 @@ button:active{
         audition dates, venue, and further instructions.
     </p>
 
-    <img src="imge.jpg" class="info-img" alt="Movie">
+    <img src="imge.jpg" class="info-img" alt="Movie" loading="lazy" decoding="async">
 <div class="teaser-card">
 
     <div class="teaser-title">
@@ -501,7 +562,7 @@ button:active{
        class="teaser-thumb">
 
         <img src="https://img.youtube.com/vi/2sBY7OuvCAg/maxresdefault.jpg"
-             alt="Official Teaser">
+             alt="Official Teaser" loading="lazy" decoding="async">
 
         <div class="play-icon"></div>
     </a>
@@ -530,6 +591,12 @@ document.getElementById('academyForm').addEventListener('submit', function(event
     const name = document.getElementById('name').value;
     const dob = document.getElementById('dob').value;
     const phone = document.getElementById('phone').value;
+
+    if (!window.emailjs) {
+        statusDiv.style.color = "#f87171";
+        statusDiv.innerText = "Please wait a moment and try again.";
+        return;
+    }
 
     // Structure parameters to match variables {{name}}, {{message}}, and {{title}} in EmailJS
     const templateParams = {
