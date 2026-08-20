@@ -478,7 +478,9 @@ footer p {
     <p class="copyright">© 2026 R MUSIC & MOVIES. All Rights Reserved.</p>
 </footer>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8939478686794816"
-     crossorigin="anonymous">
+     crossorigin="anonymous"></script>
+
+<script>
 // Fade-in entry intersection logic
 const cards = document.querySelectorAll('.blog-card');
 const observer = new IntersectionObserver(entries => {
@@ -490,6 +492,21 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.15 });
 
 cards.forEach(card => observer.observe(card));
+
+// Fallback / safety: never leave cards permanently invisible.
+if (!("IntersectionObserver" in window)) {
+    cards.forEach(card => card.classList.add("show"));
+} else {
+    // Cards already visible on initial load should be shown immediately.
+    requestAnimationFrame(() => {
+        cards.forEach(card => {
+            const rect = card.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                card.classList.add("show");
+            }
+        });
+    });
+}
 
 // Premium, Smooth 3D Interactive Mouse Motion
 cards.forEach(card => {
