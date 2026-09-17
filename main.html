@@ -365,6 +365,15 @@ img {
             <label class="field"><span>Age</span>
                 <input type="number" id="age" name="age" placeholder="Your age" min="1" max="100" inputmode="numeric" required>
             </label>
+            <label class="field"><span>Gender</span>
+                <select id="gender" name="gender" required>
+                    <option value="" disabled selected>Select gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                    <option value="Prefer not to say">Prefer not to say</option>
+                </select>
+            </label>
             <label class="field"><span>Place</span>
                 <input type="text" id="place" name="place" placeholder="City / Town" autocomplete="address-level2" required>
             </label>
@@ -474,6 +483,7 @@ document.getElementById('academyForm').addEventListener('submit', function(event
     // Extract input field values
     const name = document.getElementById('name').value.trim();
     const age = document.getElementById('age').value.trim();
+    const gender = document.getElementById('gender').value;
     const place = document.getElementById('place').value.trim();
     const interest = document.getElementById('interest').value;
     const language = document.getElementById('language').value.trim();
@@ -492,6 +502,7 @@ document.getElementById('academyForm').addEventListener('submit', function(event
         name: name,
         message: `Name: ${name}
 Age: ${age}
+Gender: ${gender}
 Place: ${place}
 Interest: ${interest}
 Language: ${language}
