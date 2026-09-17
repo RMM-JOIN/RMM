@@ -6,20 +6,28 @@
 <link rel="icon" type="image/png" href="/favicon.png">
 <title>R music & movies</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+
 
 <style>
+:root{
+    --bg:#02050c;
+    --panel:rgba(10,18,34,.78);
+    --line:rgba(148,163,184,.14);
+    --blue:#60a5fa;
+    --blue-2:#2563eb;
+    --text:#f8fafc;
+    --muted:#a9b7ca;
+    --ease:cubic-bezier(.2,.8,.2,1);
+}
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 h1, h2, h3, .logo {
-    font-family: 'Orbitron', sans-serif;
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     letter-spacing: 1px;
 }
 
@@ -28,12 +36,24 @@ html {
 }
 
 body {
-    background: #030712;
-    background-image: 
-        radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.12) 0px, transparent 50%),
-        radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.1) 0px, transparent 50%);
-    color: white;
-    overflow-x: hidden;
+    background:
+        radial-gradient(900px 500px at 8% -5%, rgba(37,99,235,.18), transparent 65%),
+        radial-gradient(800px 500px at 95% 55%, rgba(14,165,233,.10), transparent 65%),
+        var(--bg);
+    color:var(--text);
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+}
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:-1;
+    background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);
+    background-size:70px 70px;
+    mask-image:linear-gradient(to bottom,black,transparent 75%);
 }
 
 /* NAVBAR */
@@ -47,8 +67,7 @@ body {
     justify-content: space-between;
     align-items: center;
     background: rgba(3, 7, 18, 0.4);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background:rgba(2,5,12,.78);
     border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     z-index: 1000;
 }
@@ -99,7 +118,7 @@ body {
     color: white;
     font-weight: 600;
     backdrop-filter: blur(5px);
-    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    transition:transform .25s var(--ease), background .25s var(--ease), box-shadow .25s var(--ease), border-color .25s var(--ease);
 }
 
 .contact-btn:hover {
@@ -182,16 +201,12 @@ body {
     align-items: center;
     gap: 60px;
     margin: 100px 0;
-    background: rgba(255, 255, 255, 0.02);
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
+    background:linear-gradient(135deg,rgba(15,23,42,.82),rgba(7,14,27,.68));
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 32px;
     padding: 45px;
     transform-style: preserve-3d;
-    box-shadow: 
-        0 30px 60px rgba(0, 0, 0, 0.4),
-        inset 0 1px 0 rgba(255,255,255,0.1);
+    box-shadow:0 22px 55px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.07);
     opacity: 0;
     transform: translateY(80px) rotateX(5deg);
     transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s;
@@ -307,7 +322,7 @@ footer p {
     font-weight: 600;
     border-radius: 50px;
     box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
-    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    transition:transform .25s var(--ease), background .25s var(--ease), box-shadow .25s var(--ease), border-color .25s var(--ease);
 }
 .footer-buttons{
     display:flex;
@@ -387,6 +402,66 @@ footer p {
         overflow-x: hidden;
     }
 }
+
+/* PREMIUM ENHANCEMENTS */
+.hero{overflow:hidden;min-height:100svh}
+.hero::after{
+    content:"";position:absolute;inset:auto 0 0;height:180px;
+    background:linear-gradient(transparent,var(--bg));pointer-events:none
+}
+.hero-content{max-width:900px}
+.hero-kicker{
+    display:flex;align-items:center;justify-content:center;gap:12px;
+    color:#93c5fd;font-size:.72rem;font-weight:700;letter-spacing:4px;
+    margin-bottom:22px;opacity:.9
+}
+.hero-kicker span{width:28px;height:1px;background:#3b82f6;box-shadow:0 0 12px #3b82f6}
+.hero h1{line-height:.98;letter-spacing:-2px}
+.hero h1 strong{
+    background:linear-gradient(90deg,#fff,#bfdbfe 45%,#60a5fa);
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent
+}
+.hero p{font-size:1rem;letter-spacing:5px}
+.hero p i{font-style:normal;color:#3b82f6;margin:0 7px}
+.hero-cta{
+    display:inline-flex;align-items:center;gap:14px;margin-top:34px;
+    padding:14px 22px;border:1px solid rgba(96,165,250,.35);
+    border-radius:999px;background:rgba(37,99,235,.13);color:#fff;
+    text-decoration:none;font-weight:700;box-shadow:0 12px 35px rgba(37,99,235,.12);
+    transition:transform .25s var(--ease),background .25s var(--ease),box-shadow .25s var(--ease)
+}
+.hero-cta b{font-size:1.1rem;font-weight:500}
+.hero-cta:hover{transform:translateY(-3px);background:rgba(37,99,235,.24);box-shadow:0 16px 45px rgba(37,99,235,.25)}
+.hero-orb{position:absolute;border-radius:50%;pointer-events:none;filter:blur(1px);opacity:.55}
+.orb-one{width:420px;height:420px;left:-180px;top:18%;background:radial-gradient(circle,rgba(37,99,235,.2),transparent 68%)}
+.orb-two{width:360px;height:360px;right:-120px;bottom:5%;background:radial-gradient(circle,rgba(14,165,233,.16),transparent 68%)}
+.blog-section{padding-top:30px}
+.blog-card{position:relative;overflow:hidden}
+.blog-card::before{
+    content:"";position:absolute;left:0;top:0;width:2px;height:100%;
+    background:linear-gradient(transparent,#3b82f6,transparent);opacity:.5
+}
+.image-box{position:relative}
+.image-box::after{
+    content:"";position:absolute;inset:0;border-radius:20px;
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.1),inset 0 -60px 80px rgba(2,6,23,.25);
+    pointer-events:none
+}
+.image-box img{aspect-ratio:16/10;object-fit:cover}
+.content h2{letter-spacing:-.5px}
+.content p{color:var(--muted)}
+footer{position:relative;overflow:hidden}
+footer::before{
+    content:"";position:absolute;width:500px;height:250px;left:50%;top:-160px;
+    transform:translateX(-50%);background:radial-gradient(circle,rgba(37,99,235,.18),transparent 70%);
+    pointer-events:none
+}
+footer hr{border:0;border-top:1px solid rgba(255,255,255,.08);margin:55px auto 20px;max-width:1000px}
+.copyright{font-size:.86rem!important;opacity:.55!important}
+@media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}
+}
+
 </style>
 </head>
 <body>
@@ -406,16 +481,20 @@ footer p {
 </nav>
 
 <section class="hero">
+    <div class="hero-orb orb-one"></div>
+    <div class="hero-orb orb-two"></div>
     <div class="hero-content">
-        <h1>WELCOME TO OUR ACADEMY</h1>
-        <p>Learn | Create | Record | Release</p>
-        <div class="scroll-text">▼ Scroll Down ▼</div>
+        <div class="hero-kicker"><span></span> R MUSIC & MOVIES <span></span></div>
+        <h1>WELCOME TO<br><strong>OUR ACADEMY</strong></h1>
+        <p>Learn <i>•</i> Create <i>•</i> Record <i>•</i> Release</p>
+        <a class="hero-cta" href="#about">Explore Academy <b>↓</b></a>
+        <div class="scroll-text">SCROLL TO DISCOVER</div>
     </div>
 </section>
 
 <section class="blog-section" id="about">
     <div class="blog-card">
-        <div class="image-box"><img src="1.png" alt="Director"></div>
+        <div class="image-box"><img src="1.png" alt="Director" loading="lazy" decoding="async"></div>
         <div class="content">
             <div class="tag">Featured Article</div>
             <h2>Meet Our music director</h2>
@@ -424,7 +503,7 @@ footer p {
     </div>
 
     <div class="blog-card">
-        <div class="image-box"><img src="2.png" alt="Opportunities"></div>
+        <div class="image-box"><img src="2.png" alt="Opportunities" loading="lazy" decoding="async"></div>
         <div class="content">
             <div class="tag">Networking</div>
             <h2 id="opportunities">Better opportunities</h2>
@@ -433,7 +512,7 @@ footer p {
     </div>
 
     <div class="blog-card">
-        <div class="image-box"><img src="3.png" alt="Why Us"></div>
+        <div class="image-box"><img src="3.png" alt="Why Us" loading="lazy" decoding="async"></div>
         <div class="content">
             <div class="tag">Collaboration</div>
             <h2>Why US?</h2>
@@ -442,7 +521,7 @@ footer p {
     </div>
 
     <div class="blog-card">
-        <div class="image-box"><img src="4.png" alt="Passion"></div>
+        <div class="image-box"><img src="4.png" alt="Passion" loading="lazy" decoding="async"></div>
         <div class="content">
             <div class="tag">Recognition</div>
             <h2>We turn passion into career</h2>
@@ -478,8 +557,19 @@ footer p {
     <br>
     <p class="copyright">© 2026 R MUSIC & MOVIES. All Rights Reserved.</p>
 </footer>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8939478686794816"
-     crossorigin="anonymous"></script>
+<script>
+window.addEventListener('load', () => {
+    const loadAds = () => {
+        const s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8939478686794816';
+        s.crossOrigin = 'anonymous';
+        document.head.appendChild(s);
+    };
+    if ('requestIdleCallback' in window) requestIdleCallback(loadAds, {timeout:2500});
+    else setTimeout(loadAds, 1500);
+});
+</script>
 
 <script>
 // Fade-in entry intersection logic
