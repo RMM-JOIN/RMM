@@ -127,6 +127,49 @@ body::before{
     transform: translateY(-2px);
 }
 
+/* INDEX PAGE — URGENT JOIN BUTTON */
+.contact-btn.index-urgent{
+    position:relative;
+    animation:joinShake 1.15s ease-in-out infinite;
+    box-shadow:0 0 0 rgba(37,99,235,0);
+}
+
+.contact-btn.index-urgent::after{
+    content:"HURRY UP!";
+    position:absolute;
+    left:50%;
+    top:-11px;
+    transform:translateX(-50%);
+    padding:3px 7px;
+    border-radius:5px;
+    background:#0b1220;
+    border:1px solid rgba(96,165,250,.35);
+    color:#93c5fd;
+    font-size:.52rem;
+    font-weight:800;
+    letter-spacing:1.2px;
+    line-height:1;
+    white-space:nowrap;
+    pointer-events:none;
+    opacity:.95;
+}
+
+@keyframes joinShake{
+    0%,72%,100%{transform:translateX(0) rotate(0deg)}
+    76%{transform:translateX(-2px) rotate(-1deg)}
+    80%{transform:translateX(3px) rotate(1deg)}
+    84%{transform:translateX(-3px) rotate(-1deg)}
+    88%{transform:translateX(2px) rotate(1deg)}
+    92%{transform:translateX(-1px) rotate(0deg)}
+}
+
+@media (prefers-reduced-motion:reduce){
+    .contact-btn.index-urgent{
+        animation:none;
+    }
+}
+
+
 /* HERO SECTION */
 .hero {
     height: 100vh;
@@ -627,7 +670,7 @@ footer hr{border:0;border-top:1px solid rgba(255,255,255,.08);margin:55px auto 2
         <li><a href="#opportunities">Opportunities</a></li>
         <li><a href="#contact">Contact</a></li>
     </ul>
-    <a href="#contact" class="contact-btn">Join Now</a>
+    <a href="#contact" class="contact-btn index-urgent">Join Now</a>
 </nav>
 
 <section class="hero">
@@ -717,6 +760,18 @@ footer hr{border:0;border-top:1px solid rgba(255,255,255,.08);margin:55px auto 2
     </p>
     <p class="copyright">© 2026 R MUSIC & MOVIES. All Rights Reserved.</p>
 </footer>
+<script>
+/* Keep the "HURRY UP!" effect exclusive to index.html. */
+(() => {
+    const page = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    if (page !== 'index.html') {
+        document.querySelectorAll('.index-urgent').forEach(btn => {
+            btn.classList.remove('index-urgent');
+        });
+    }
+})();
+</script>
+
 <script>
 window.addEventListener('load', () => {
     const loadAds = () => {
