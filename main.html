@@ -605,6 +605,7 @@ Creative Option: ${talent}`
             statusDiv.style.color = "#4ade80"; // Light green for success
             statusDiv.innerText = "Application sent successfully!";
             document.getElementById('academyForm').reset();
+            window.showAgentModal();
         }, function(error) {
             statusDiv.style.color = "#f87171"; // Light red for error
             statusDiv.innerText = "Error: Failed to send application.";
@@ -613,5 +614,44 @@ Creative Option: ${talent}`
 });
 </script>
 
+
+<style>
+/* Post-audition support dialog */
+.agent-modal{position:fixed;inset:0;z-index:9999;display:none;place-items:center;padding:18px;background:rgba(2,6,23,.76);backdrop-filter:blur(8px)}
+.agent-modal.is-open{display:grid}
+.agent-dialog{width:min(440px,100%);padding:30px 24px;border:1px solid rgba(96,165,250,.28);border-radius:22px;background:linear-gradient(145deg,#101d32,#07101e);box-shadow:0 24px 80px rgba(0,0,0,.48);text-align:center;color:#f8fafc}
+.agent-icon{width:52px;height:52px;margin:0 auto 16px;display:grid;place-items:center;border-radius:16px;background:rgba(37,99,235,.18);color:#93c5fd;font-size:25px}
+.agent-dialog h2{font-size:1.35rem;margin:0 0 10px}
+.agent-dialog p{color:#b8c7dc;line-height:1.65;margin:0 0 22px;font-size:.96rem}
+.agent-actions{display:flex;gap:10px}
+.agent-actions a,.agent-actions button{flex:1;min-height:46px;border-radius:11px;font:inherit;font-weight:750;cursor:pointer;text-decoration:none;display:grid;place-items:center}
+.agent-ask{background:linear-gradient(135deg,#2563eb,#0ea5e9);color:#fff;border:0}
+.agent-close{background:rgba(255,255,255,.06);color:#dbeafe;border:1px solid rgba(148,163,184,.2)}
+@media(max-width:420px){.agent-dialog{padding:25px 18px}.agent-actions{flex-direction:column}}
+@media(prefers-reduced-motion:no-preference){.agent-dialog{animation:agentPop .2s ease-out}@keyframes agentPop{from{opacity:0;transform:translateY(10px) scale(.98)}to{opacity:1;transform:none}}}
+</style>
+<div class="agent-modal" id="agentModal" role="dialog" aria-modal="true" aria-labelledby="agentTitle" aria-describedby="agentDescription">
+  <div class="agent-dialog">
+    <div class="agent-icon" aria-hidden="true">✦</div>
+    <h2 id="agentTitle">Application submitted</h2>
+    <p id="agentDescription">Any queries about R MUSIC? Ask our Agent.</p>
+    <div class="agent-actions">
+      <a class="agent-ask" href="https://chat.rmusic.in" target="_blank" rel="noopener noreferrer">ASK</a>
+      <button class="agent-close" type="button" id="closeAgentModal">Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(() => {
+ const modal=document.getElementById("agentModal");
+ const close=document.getElementById("closeAgentModal");
+ window.showAgentModal=()=>{modal.classList.add("is-open");close.focus();};
+ const hide=()=>modal.classList.remove("is-open");
+ close.addEventListener("click",hide);
+ modal.addEventListener("click",e=>{if(e.target===modal)hide();});
+ document.addEventListener("keydown",e=>{if(e.key==="Escape"&&modal.classList.contains("is-open"))hide();});
+})();
+</script>
 </body>
 </html>
